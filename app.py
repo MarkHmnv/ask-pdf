@@ -40,7 +40,7 @@ def main():
 
     question = st.text_input('Ask a question about your PDFs:')
 
-    if question:
+    if question and st.session_state.conversation is not None:
         response = st.session_state.conversation({'question': question})
         st.session_state.chat_history = response['chat_history']
         user_messages = st.session_state.chat_history[::2]
